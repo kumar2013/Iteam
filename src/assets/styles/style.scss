@@ -1,0 +1,307 @@
+/* Variables & Mixins */
+$mobile-width: 768px;
+$tablet-width: 991px;
+
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin max991 {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin max500 {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin width768To991 {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+
+/* Common Styles */
+body {
+  font-family: raleway;
+  overflow-x: hidden;
+}
+
+#app {
+  background-color: #f5f5f5;
+}
+
+#it_navbar {
+  background-color: #fff;
+  border: 0;
+  
+  h4 {
+    color: #29aae1;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 50px;
+    margin: 0;
+    
+    @include mobile {
+      margin-left: 15px;
+    }
+    
+    a {
+      &:hover,
+      &:focus {
+        outline: 0;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+footer {
+  color: #fff;
+  text-align: center;
+  background-color: #54C1A9;
+  padding: 10px 0;
+  
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Home Page */
+#it_searchbox {
+  width: 100%;
+  height: 200px;
+  color: #fff;
+  display: table;
+  background-color: #29aae1;
+  background-size: cover;
+  background-position: center;
+  margin-top: 50px;
+  
+  form {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    
+    div {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1;
+
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    input {
+      width: 300px;
+      border: 0;
+      border-radius: 20px;
+      margin-left: 10px;
+      
+      @include mobile {
+        margin-top: 10px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+#it-movies-list {
+  padding: 50px 0;
+  
+  ul {
+    padding-left: 0;
+    
+    li {
+      list-style: none;
+      margin-bottom: 20px;
+      
+      img {
+        width: 100%;
+        height: 378px;
+        
+        @include mobile {
+          height: auto;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
+
+/* Movie Page */
+#it_movie_page {
+  margin-top: 50px;
+  
+  img {
+    @include mobile {
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @include max991 {
+      margin-top: 30px;
+    }
+  }
+
+  .it-movie-details {
+    padding: 0 50px;
+    
+    @include width768To991 {
+      padding: 0 20px;
+    }
+    
+    @include max500 {
+      padding: 0 15px;
+    }
+    
+    h3 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #757575;
+      
+      @include mobile {
+        text-align: center;
+      }
+    }
+    
+    .it-movie-tagline {
+      font-style: italic;
+      
+      @include mobile {
+        text-align: center;
+      }
+    }
+    
+    p.it-movie-overview {
+      margin: 15px 0;
+    }
+    
+    p {
+      span {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  #it_movie_cast {
+    
+    background-size: cover;
+    background-position: center center;
+    
+    .it-bg-wrapper {
+      width: 100%;
+      height: inherit;
+      display: inline-block;
+      position: relative;
+      background-color: rgba(0,0,0,0.6);
+      vertical-align: top;
+      padding-bottom: 50px;
+      z-index: 2;
+      
+      h4 {
+        color: #fff;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 50px 0;
+      }
+      
+      ul {
+        text-align: center;
+        padding-left: 0;
+
+        li {
+          list-style: none;
+
+          a {
+            color: #fff;
+            font-size: 17px;
+
+            &:hover,
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* Actor Page */
+#it_actor_page {
+  margin-top: 50px;
+  
+  img {
+    padding: 50px;
+    
+    @include mobile {
+      width: 100%;
+      max-width: 400px;
+      padding: 0;
+      margin: 15px auto;
+    }
+    
+    @include width768To991 {
+      padding: 50px 0;
+    }
+  }
+  
+  .it-actor-details {
+    padding-top: 30px;
+    
+    @include mobile {
+      padding-top: 0;
+    }
+    
+    h3 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #094C83;
+      
+      @include mobile {
+        text-align: center;
+      }
+    }
+    
+    p {
+      
+      span {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  #it_actor_cast {
+    padding-bottom: 50px;
+    
+    h4 {
+      font-size: 25px;
+      font-weight: 700;
+    }
+    
+    th {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
